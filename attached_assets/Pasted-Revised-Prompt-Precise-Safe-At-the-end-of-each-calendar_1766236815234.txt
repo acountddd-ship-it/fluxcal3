@@ -1,0 +1,74 @@
+Revised Prompt (Precise & Safe)
+
+At the end of each calendar day, evaluate the user’s food intake using the following rules:
+
+Definitions
+
+Food Intake Goal = the user’s daily target calories
+
+TDEE = the user’s total daily energy expenditure
+
+Buffer = unused calories from the food intake goal, applied to the next day only
+
+Buffer Generation Rules
+
+If the user finishes a day below the food intake goal:
+
+Calculate the leftover calories:
+bufferAmount = foodIntakeGoal - caloriesConsumed
+
+This buffer is applied only to the following day.
+
+The buffer:
+
+Is single-use
+
+Does not stack
+
+Does not roll over beyond one day
+
+Is consumed first before counting new food intake
+
+If the user consumes calories up to or into the buffer, but does not exceed the food intake goal, the buffer is considered used and does not carry forward.
+
+At the start of any day without a valid buffer, food intake begins at 0 with no buffer.
+
+Overeating Rules
+
+If the user exceeds the food intake goal but remains below TDEE:
+
+There is no penalty
+
+No buffer is generated for the next day
+
+If the user exceeds TDEE:
+
+There is no punishment
+
+No buffer is generated for the following day, even if that following day ends under the food intake goal
+
+Buffer eligibility resumes normally after that day
+
+Progress Bar Representation
+
+The food intake progress bar should visually represent:
+
+A distinct buffer zone at the beginning of the bar when a buffer is active
+
+The buffer zone uses a non-threatening, neutral-warm color consistent with the app (e.g., soft gold or amber)
+
+The buffer zone has a subtle glow to differentiate it from normal intake
+
+The buffer zone is not counted as extra capacity, only as pre-filled allowance
+
+Normal food intake fills the bar after the buffer zone is consumed.
+
+User Feedback
+
+When a buffer is active, display clear, calm text indicating:
+
+That a buffer is available
+
+The exact calorie amount of the buffer (e.g., “Buffer available: 220 kcal”)
+
+This messaging should be informational, not celebratory or warning-based.
